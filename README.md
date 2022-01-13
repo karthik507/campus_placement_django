@@ -1,4 +1,4 @@
-# TPO
+# TPO1
 <p>🏢Website developed for training and placement office to help them organize and motivate students much more efficiently. Also, to help them get better job opportunities.</p>
 <br>
 <h2>Getting Started</h2>
