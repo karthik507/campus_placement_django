@@ -1,8 +1,9 @@
+{% load static %}
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="">
             <!-- <img src="" width="112" height="28"> -->
-            <img src="https://img.icons8.com/office/40/000000/code.png"/>
+            <img src="{% static 'images\dsce logo.png'%}"/>
         </a>
 
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -20,7 +21,7 @@
             <a class="navbar-item" href="/#about" id="button">
                 <strong>Objectives</strong>
             </a>
-            <a class="navbar-item" href="/#events" id=button1>
+            <a class="navbar-item" href="/eventss" id="button1">
                 <strong>Events</strong>
             </a>
             <a class="navbar-item" href="/Statistics" >

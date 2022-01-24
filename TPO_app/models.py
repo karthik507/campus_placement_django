@@ -18,7 +18,9 @@ class JobInfo(models.Model):
     college = models.CharField(max_length=20)
     graduation = models.DecimalField(max_digits=19, decimal_places=2)
     company = models.CharField(max_length=200)
+    companyid = models.CharField(max_length=10)
     profile = models.CharField(max_length=200)
+    skills=models.CharField(max_length=200)
 
     def __str__(self):
         return self.company
@@ -27,6 +29,7 @@ class EventInfo(models.Model):
     eventname = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     eventdate = models.CharField(max_length=200)
+    eventid = models.CharField(max_length=200,default='')
     
     def __str__(self):
         return self.eventname
@@ -38,4 +41,3 @@ class CompanyInfo(models.Model):
     
     def __str__(self):
         return self.cname
-

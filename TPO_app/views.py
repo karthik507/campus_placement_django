@@ -33,7 +33,7 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now logged in as {username}")
+                messages.info(request, "You are now logged in as {username}")
                 return redirect("/")
             else:
                 messages.error(request, "Invalid username or password")
@@ -61,22 +61,26 @@ def register_student_submit(request):
     email = request.POST['email']
     phoneno = request.POST['phoneno']
     event = request.POST['event']
+    
     Student_Info = StudentInfo(uname=name,email=email, phoneno=phoneno,event=event)
     Student_Info.save()
     messages.success(request, 'You have successfully registered.')
     return render(request,'TPO_app/register_student.html')
 
-
+def eventss(request):
+    results=EventInfo.objects.all()
+    return render(request,'includes/Events_login.html',{"EventInfo":results})
 
 def companies(request):
-    return render(request,'includes/company.html')
+    results=CompanyInfo.objects.all()
+    return render(request,'includes/company.html',{"CompanyInfo":results})
 
 @login_required(login_url='/login/')
 def register_job(request):
     return render(request,'includes/register_job.html')
 
 def register_job_submit(request):
-    print("Hello form is submitted")
+    print("Form is submitted")
     print(request.POST['name'])
     print(request.POST['college'])
     print(request.POST['company'])
@@ -89,43 +93,47 @@ def register_job_submit(request):
     college = request.POST['college']
     graduation = request.POST['graduation']
     company = request.POST['company']
+    companyid = request.POST['companyid']
     profile = request.POST['profile']
+    skills=request.POST['skills']
 
-    Job_Info = JobInfo(uname=name, email=email, phoneno=phoneno, college=college, graduation=graduation, company=company, profile=profile)
+    Job_Info = JobInfo(uname=name, email=email, phoneno=phoneno, college=college, graduation=graduation, company=company,companyid=companyid, profile=profile,skills=skills)
     Job_Info.save()
     messages.success(request, 'Your Application is successfully sent.')
     return render(request,'includes/register_job.html')
 
+def Events_login(request):
+     return render(request,'includes/Events_login.html')
+    
+
 def upcoming_events(request):
-    return render(request,'includes/upcoming_events.html')
-
-
-def upcoming_events_submit(request):
-    print(request.POST['eventname'])
-    eventname = request.POST['eventname']
-    description = request.POST['description']
-    eventdate = request.POST['eventdate']
-    Event_Info = EventInfo(eventname=eventname,description=description, eventdate=eventdate)
-    Event_Info.save()
-    messages.success(request, 'Your Event is successfully saved.')
-    return render(request,'includes/upcoming_events.html')
-
+    if request.method=="POST":
+        if request.POST.get("eventname") and request.POST.get("description") and request.POST.get("eventdate") and request.POST.get("eventid"):
+            eventc=EventInfo()
+            eventc.eventname=request.POST.get("eventname")
+            eventc.description=request.POST.get("description")
+            eventc.eventdate=request.POST.get("eventdate")
+            eventc.eventid=request.POST.get("eventid")
+            eventc.save()
+            messages.success(request, 'Your Event'+eventc.eventname+'is successfully saved.')
+            return render(request,'includes/upcoming_events.html')
+    else:
+        return render(request,'includes/upcoming_events.html')
 
 def add_company(request):
-    return render(request,'includes/add_company.html')
+    if request.method=="POST":
+        if request.POST.get("cname") and request.POST.get("role") and request.POST.get("salary"):
+            savec=CompanyInfo()
+            savec.cname=request.POST.get("cname")
+            savec.role=request.POST.get("role")
+            savec.salary=request.POST.get("salary")
+            savec.save()
+            messages.success(request, 'Your Company'+savec.cname+'is successfully saved.')
+            return render(request,'includes/add_company.html')
+    else:
+        return render(request,'includes/add_company.html')
 
-
-def add_company_submit(request):
-    print(request.POST['cname'])
-    cname = request.POST['cname']
-    role = request.POST['role']
-    salary = request.POST['salary']
-    Company_Info = CompanyInfo(cname=cname,role=role,salary=salary)
-    Company_Info.save()
-    messages.success(request, 'Your Company is successfully saved.')
-    return render(request,'includes/add_company.html')
-
-
+    
 def Statistics(request):
     return render(request,'includes/Statistics.html')
 # def home_supply_submit(request):

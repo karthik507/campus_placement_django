@@ -4,7 +4,7 @@
 {% load bulma_tags %}
 {% load static %}
 <link href="{% static '/css/styles.css' %}" rel="stylesheet">
-<title>{% block title%}Add Upcoming Events{% endblock %}</title>
+<title>{% block title%}Add events{% endblock %}</title>
 {% block content %}
 <br>
 <div class="tile is-ancestor">
@@ -18,20 +18,20 @@
     <div class="tile is-parent">
         <div class="tile is-child box">
             <p class="title">Register for event:</p>
-            <form action="/upcoming_events_submit/" method="POST">
+            <form  method="POST">
                 {% csrf_token %}
 
                 <div class="field">
                     <label class="label">Event Name</label>
                     <div class="control">
-                        <input class="input " type="text" placeholder="" value=""
+                        <input class="input " type="text" placeholder="Event name" value=""
                             name="eventname">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Description for event</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="" name="description" value="">
+                        <input class="input" type="text" placeholder="Description" name="description" value="">
                     </div>
                 </div>
                 <div class="field">
