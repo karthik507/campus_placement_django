@@ -1,0 +1,53 @@
+
+{% extends "includes/index.html" %}
+{% include 'includes/messages.html' %}
+{% load bulma_tags %}
+{% load static %}
+<title>{% block title %} events{% endblock  %} </title>
+{% block content %}
+            {% if user.is_superuser %}
+            <a href="upcoming_events/">
+                <button class="button is-light is-outlined is-pulled-right"
+                    style="background-color: rgba(105, 0, 255, 0.11);color: #6900FF;"><strong><i class="fa fa-plus-circle" aria-hidden="true"></i>Add events</strong></button>
+            </a>
+
+            {% endif %}
+            
+            <h1 class="title"> <b> <center> Upcoming events</center></b> </p></h1>
+            {% for eventss in EventInfo %}
+            <div class="tile is-ancestor mt-6">
+                <div class="tile is-parent">
+                    <div class="tile is-child " id="events">
+                        <div class="tile is-ancestor">
+                            <div class="tile is-parent">
+                                <article class="tile is-child ">
+                                    <div class="card mx-4 col-lg-4 col-md-3">
+                                        <div class="card-content">
+                                            
+                                <p class="title"> {{eventss.eventname}}  </p>
+                                <div class="content">
+                                   <p> Event id:{{eventss.id}}</p>
+                                   <br>
+                                   {{eventss.description}} 
+                                   <br><a>info@gmail.com</a>. <br>
+                                    <a href="/TPO_app">
+                                        <button class="button is-light is-outlined mt-3 is-pulled-right"
+                                            style="background-color: rgba(105, 0, 255, 0.11);color: #6900FF;"><strong><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</strong></button>
+                                    </a>
+                                    <br>
+                                    <time>{{eventss.eventdate}} </time>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+</div>
+{%endfor%}
+<!-- COMPANY ENDS -->
+{% endblock%}

@@ -1,0 +1,52 @@
+{% extends "includes/index.html" %}
+{% include 'includes/messages.html' %}
+
+{% load bulma_tags %}
+{% load static %}
+<link href="{% static '/css/styles.css' %}" rel="stylesheet">
+<title>{% block title%}Companies{% endblock %}</title>
+<br>
+{% block content %}
+<!-- COMPANY STARTS -->
+{% if user.is_superuser %}
+<a href="add_company/">
+    <button class="button is-light is-outlined is-pulled-right"
+        style="background-color: rgba(105, 0, 255, 0.11);color: #6900FF;"><strong><i class="fa fa-plus-circle"
+                aria-hidden="true"></i> Add Company</strong></button>
+</a>
+{% endif %}
+<h1 class="title">OUR COMPANIES</h1>
+{%for Companies in CompanyInfo %}
+<div class="tile is-ancestor mt-6">
+    <div class="tile is-parent">
+        <div class="tile is-child " id="events">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent">
+                    <article class="tile is-child ">
+                        <div class="card mx-4 col-lg-4 col-md-3">
+                            <div class="card-content">
+                                <p class="title">{{Companies.cname}}</p>
+                                <div class="content">
+                                    <p>Company id:{{Companies.id}}</p><br>
+                                    <p>Salary: <strong>{{Companies.salary}}</strong> </p><br>
+                                    <p>Role: <strong>{{Companies.role}}</strong></p>
+                                    <a href="/register_job">
+                                        <button class="button is-light is-outlined mt-3 is-pulled-right"
+                                            style="background-color: rgba(105, 0, 255, 0.11);color: #6900FF;"><strong>Apply
+                                                Now</strong></button>
+                                    </a>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+</div>
+{%endfor%}
+<!-- COMPANY ENDS -->
+{% endblock%}
