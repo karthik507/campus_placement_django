@@ -29,7 +29,7 @@ class EventInfo(models.Model):
     eventname = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     eventdate = models.CharField(max_length=200)
-    eventid = models.CharField(max_length=200,default='')
+    eventid = models.CharField(max_length=200)
     
     def __str__(self):
         return self.eventname
