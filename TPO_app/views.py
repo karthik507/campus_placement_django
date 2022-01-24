@@ -54,15 +54,15 @@ def register_student(request):
     return render(request,'TPO_app/register_student.html')
 
 def register_student_submit(request):
-    print("Hello form is submitted")
+    print("Form is submitted")
     print(request.POST['name'])
     print(request.POST['event'])
     name = request.POST['name']
     email = request.POST['email']
     phoneno = request.POST['phoneno']
     event = request.POST['event']
-    
-    Student_Info = StudentInfo(uname=name,email=email, phoneno=phoneno,event=event)
+    eventid = request.POST['eventid']
+    Student_Info = StudentInfo(uname=name,email=email, phoneno=phoneno,event=event,eventid=eventid)
     Student_Info.save()
     messages.success(request, 'You have successfully registered.')
     return render(request,'TPO_app/register_student.html')
@@ -108,14 +108,14 @@ def Events_login(request):
 
 def upcoming_events(request):
     if request.method=="POST":
-        if request.POST.get("eventname") and request.POST.get("description") and request.POST.get("eventdate") and request.POST.get("eventid"):
+        if request.POST.get("eventname") and request.POST.get("description") and request.POST.get("eventdate") and request.POST.get("email") :
             eventc=EventInfo()
             eventc.eventname=request.POST.get("eventname")
             eventc.description=request.POST.get("description")
             eventc.eventdate=request.POST.get("eventdate")
-            eventc.eventid=request.POST.get("eventid")
+            eventc.email=request.POST.get("email")
             eventc.save()
-            messages.success(request, 'Your Event'+eventc.eventname+'is successfully saved.')
+            messages.success(request, 'Your Event  '+  eventc.eventname   +'  is successfully saved.')
             return render(request,'includes/upcoming_events.html')
     else:
         return render(request,'includes/upcoming_events.html')
@@ -128,7 +128,7 @@ def add_company(request):
             savec.role=request.POST.get("role")
             savec.salary=request.POST.get("salary")
             savec.save()
-            messages.success(request, 'Your Company'+savec.cname+'is successfully saved.')
+            messages.success(request, 'Your Company  '+   savec.cname   +'  is successfully saved.')
             return render(request,'includes/add_company.html')
     else:
         return render(request,'includes/add_company.html')
