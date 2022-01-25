@@ -108,12 +108,12 @@ def Events_login(request):
 
 def upcoming_events(request):
     if request.method=="POST":
-        if request.POST.get("eventname") and request.POST.get("description") and request.POST.get("eventdate") and request.POST.get("email") :
+        if request.POST.get("eventname") and request.POST.get("description") and request.POST.get("eventdate") and request.POST.get("email1") :
             eventc=EventInfo()
             eventc.eventname=request.POST.get("eventname")
             eventc.description=request.POST.get("description")
             eventc.eventdate=request.POST.get("eventdate")
-            eventc.email=request.POST.get("email")
+            eventc.email1=request.POST.get("email1")
             eventc.save()
             messages.success(request, 'Your Event  '+  eventc.eventname   +'  is successfully saved.')
             return render(request,'includes/upcoming_events.html')
