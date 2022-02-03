@@ -12,10 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 #new code
 from pathlib import Path
 
+from importlib_metadata import os
 
-from importlib.metadata import os
-
-#newccode
+# newccode
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
