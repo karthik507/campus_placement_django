@@ -3,6 +3,7 @@
 
 {% load bulma_tags %}
 {% load static %}
+
 <link href="{% static '/css/styles.css' %}" rel="stylesheet">
 <title>{% block title%}Companies{% endblock %}</title>
 <br>
@@ -15,7 +16,7 @@
                 aria-hidden="true"></i> Add Company</strong></button>
 </a>
 {% endif %}
-<h1 class="title">OUR COMPANIES</h1>
+<h1 class="title"><center>OUR COMPANIES</center>   </h1>
 {%for Companies in CompanyInfo %}
 <div class="tile is-ancestor mt-6">
     <div class="tile is-parent">

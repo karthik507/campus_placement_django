@@ -3,7 +3,8 @@
 {% include 'includes/messages.html' %}
 {% load bulma_tags %}
 {% load static %}
-<title>{% block title %} events{% endblock  %} </title>
+<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+<title><center>{% block title %} events{% endblock  %} </cemnter></title>
 {% block content %}
             {% if user.is_superuser %}
             <a href="upcoming_events/">
@@ -24,12 +25,12 @@
                                     <div class="card mx-4 col-lg-4 col-md-3">
                                         <div class="card-content">
                                             
-                                <p class="title"> {{eventss.eventname}}  </p>
+                                <p class="title"> {{eventss.eventname}} </p>
                                 <div class="content">
-                                   <p> Event id:{{eventss.id}}</p>
+                                   <p> Event id: {{eventss.id}}</p>
                                    <br>
                                    {{eventss.description}} 
-                                   <br><a>info@gmail.com</a>. <br>
+                                   <br><p>For more info contact:    <a>{{eventss.email1}}</a>.</p> <br>
                                     <a href="/TPO_app">
                                         <button class="button is-light is-outlined mt-3 is-pulled-right"
                                             style="background-color: rgba(105, 0, 255, 0.11);color: #6900FF;"><strong><i class="fa fa-user-plus" aria-hidden="true"></i>  Register</strong></button>
