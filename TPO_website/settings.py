@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-#new code
+# new code
+# new moduels are imported
 from pathlib import Path
 
 from importlib_metadata import os
