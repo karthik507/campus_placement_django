@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 # new moduels are imported
 from pathlib import Path
 
-from importlib_metadata import os
+import os
 
 # newccode
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'TPO_app',
-    'bulma',
 ]
 
 MIDDLEWARE = [
